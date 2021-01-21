@@ -20,10 +20,12 @@ export class TaggedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.loadData(this.tag);
   }
 
   reloadData(tag: string) {
+    window.scroll(0, 0);
     this.loadData(tag);
   }
 
