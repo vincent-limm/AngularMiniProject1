@@ -55,12 +55,11 @@ export class UserCardComponent implements OnInit {
 
   gotoTag(tag: string) {
     let route = this.router.url;
-    let tagstring = tag.split(' ').join('');
 
     if (route.split('/')[1] === 'tag') {
-      this.reload.emit(tagstring);
+      this.reload.emit(tag);
     } else {
-      this.router.navigate(['/tag', tagstring]);
+      this.router.navigate(['tag/', tag]);
     }
   }
 }

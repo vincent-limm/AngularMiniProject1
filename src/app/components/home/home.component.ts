@@ -39,11 +39,12 @@ export class HomeComponent implements OnInit {
   gotoTag(tag: string) {
     let route = this.router.url;
     let tagstring = tag.split(' ').join('');
+    this.router.navigate(['/tag', tag]);
 
-    if (route.split('/')[1] === 'tag') {
-      this.reload.emit(tagstring);
-    } else {
-      this.router.navigate(['/tag', tagstring]);
-    }
+    // if (route.split('/')[1] === 'tag') {
+    //   this.reload.emit(tagstring);
+    // } else {
+    //   this.router.navigate(['/tag', tagstring]);
+    // }
   }
 }
