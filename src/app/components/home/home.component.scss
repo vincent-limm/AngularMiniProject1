@@ -1,0 +1,7 @@
+:host {
+  &::ng-deep {
+    .p-grid.postContainer {
+      padding: 20px !important;
+    }
+  }
+}

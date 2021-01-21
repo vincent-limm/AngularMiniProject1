@@ -1,0 +1,30 @@
+<div class="p-grid postContainer">
+  <div class="p-md-12 p-sm-12 loadingSpinner" *ngIf="loading">
+    <p-progressSpinner strokeWidth="5"></p-progressSpinner>
+  </div>
+  <div>
+    <div>
+      <p-button
+        label="Tags"
+        styleClass="p-mr-2 "
+        icon="pi pi-tags"
+        (click)="getTags()"
+      >
+      </p-button>
+    </div>
+  </div>
+
+  <div class="p-lg-6 p-lg-offset-2 p-md-8 p-md-offset-1" *ngIf="!loading">
+    <app-post-card *ngFor="let post of allPosts" [post]="post"></app-post-card>
+  </div>
+</div>
+
+<div *ngIf="dialogTags">
+  <p-dialog header="Tags" [(visible)]="dialogTags">
+    <div class="badges">
+      <div class="p-tag" *ngFor="let tag of tags" (click)="gotoTag(tag)">
+        {{ tag }}
+      </div>
+    </div>
+  </p-dialog>
+</div>

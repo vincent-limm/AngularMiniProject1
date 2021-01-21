@@ -1,0 +1,70 @@
+<p-card class="user card-user">
+  <p-avatar [image]="user.picture" size="xlarge"></p-avatar>
+  <div class="p-card-subtitle">{{ user.firstName }} {{ user.lastName }}</div>
+  <div class="comments">
+    <p-button
+      label="View Details"
+      styleClass="p-mr-2"
+      (click)="userInfo(user.id)"
+    ></p-button>
+    <p-button
+      label="View Posts"
+      styleClass="p-mr-2"
+      (click)="userPosts(user.id)"
+    ></p-button>
+  </div>
+  <div class="cardLoaderSpinner" *ngIf="postApiCall">
+    <p-progressSpinner strokeWidth="2"></p-progressSpinner>
+  </div>
+</p-card>
+
+<div *ngIf="dialogUser">
+  <p-dialog
+    [header]="userDetails.firstName + ' ' + userDetails.lastName"
+    [(visible)]="dialogUser"
+    [style]="{ width: '600px' }"
+  >
+    <p-card class="userDetails">
+      <p-header><img [src]="userDetails.picture" /></p-header>
+      <div class="p-card-title">{{ userDetails.email }}</div>
+      <div class="p-card-subtitle">{{ userDetails.phone }}</div>
+      <div class="card_content">
+        <div class="contentRow">
+          <div class="dataBox">
+            <div class="labelBox">Member Since</div>
+            <div class="valueBox">
+              {{ userDetails.registerDate | date: "yyy MMMM dd" }}
+            </div>
+          </div>
+          <div class="dataBox">
+            <div class="labelBox">Gender</div>
+            <div class="valueBox">{{ userDetails.gender }}</div>
+          </div>
+          <div class="dataBox">
+            <div class="labelBox">Birthdate</div>
+            <div class="valueBox">
+              {{ userDetails.dateOfBirth | date: "yyy MMMM dd" }}
+            </div>
+          </div>
+        </div>
+        <div class="contentRow">
+          <div class="dataBox">
+            <div class="labelBox">Address</div>
+            <div class="valueBox">{{ userDetails.location | address }}</div>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </p-dialog>
+</div>
+
+<div *ngIf="dialogPost">
+  <p-dialog header="Posts" [(visible)]="dialogPost">
+    <div class="p-lg-6 p-lg-offset-3 p-md-8 p-md-offset-1">
+      <app-post-card
+        *ngFor="let post of userPostsList"
+        [post]="post"
+      ></app-post-card>
+    </div>
+  </p-dialog>
+</div>

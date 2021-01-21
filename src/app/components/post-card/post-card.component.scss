@@ -1,0 +1,123 @@
+:host {
+  &::ng-deep {
+    .p-card-title {
+      cursor: pointer;
+    }
+    .p-card {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .p-card-header {
+      cursor: pointer;
+      height: 400px !important;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+      }
+    }
+    .pfooter {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      .badges {
+        display: flex !important;
+        width: 70%;
+        .p-tag {
+          margin-right: 5px;
+        }
+      }
+      .comments {
+        width: 30%;
+        text-align: right;
+        .p-button {
+          font-size: 0.8rem;
+          padding: 0.2rem 1rem;
+        }
+      }
+    }
+    .userDetails {
+      .p-card-header {
+        height: 400px !important;
+        text-align: center;
+        overflow: hidden;
+        img {
+          width: 350px;
+          height: auto;
+          border-radius: 50%;
+        }
+      }
+    }
+    .contentRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .dataBox {
+        display: flex;
+        flex-direction: column;
+        .labelBox {
+          font-size: 0.8rem;
+          font-weight: bold;
+        }
+        .valueBox {
+          font-size: 1rem;
+        }
+      }
+    }
+    .cardLoaderSpinner {
+      position: fixed;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .flexColumn {
+      display: flex;
+      flex-direction: column;
+    }
+    .flexRow {
+      display: flex;
+      flex-direction: row;
+    }
+    .commentsBox {
+      height: 100%;
+      width: 100%;
+      .comment {
+        margin-bottom: 15px;
+        width: 100%;
+        border: 1px solid grey;
+        border-radius: 5px;
+        padding: 5px 1rem;
+        .commentAuthorPic {
+          margin-right: 10px;
+          img {
+            width: 35px;
+            height: auto;
+            border-radius: 50%;
+          }
+        }
+        .commentAuthorName {
+          font-size: 1.1rem;
+          font-weight: bold;
+          justify-content: center;
+        }
+        .commentContent {
+          font-size: 1rem;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+        .commentDate {
+          text-align: right;
+          font-size: 0.8rem;
+          color: grey;
+        }
+      }
+    }
+  }
+}

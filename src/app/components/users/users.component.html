@@ -1,0 +1,12 @@
+<div class="p-grid postContainer">
+  <div class="p-md-12 p-sm-12 loadingSpinner" *ngIf="loading">
+    <p-progressSpinner strokeWidth="5"></p-progressSpinner>
+  </div>
+
+  <div
+    class="p-lg-6 p-lg-offset-3 p-md-8 p-md-offset-2 p-grid p-sm-offset-2"
+    *ngIf="!loading"
+  >
+    <app-user-card *ngFor="let user of allUsers" [user]="user"></app-user-card>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="p-grid postContainer">
+  <div class="p-md-12 p-sm-12 loadingSpinner" *ngIf="loading">
+    <p-progressSpinner strokeWidth="5"></p-progressSpinner>
+  </div>
+  <div>
+    <p-button
+      label="Clear Tags"
+      styleClass="p-mr-2 "
+      icon="pi pi-times-circle"
+      routerLink=""
+    >
+    </p-button>
+  </div>
+  <div class="p-lg-6 p-lg-offset-2 p-md-8 p-md-offset-2" *ngIf="!loading">
+    <app-post-card
+      *ngFor="let post of postItems"
+      (reload)="reloadData($event)"
+      [post]="post"
+    ></app-post-card>
+  </div>
+</div>

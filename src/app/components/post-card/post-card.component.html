@@ -1,0 +1,118 @@
+<p-card>
+  <p-header><img [src]="post.image" /></p-header>
+  <div class="p-card-title" (click)="userInfo(post.owner.id)">
+    {{ post.owner | fullname }}
+  </div>
+  <div class="p-card-subtitle">
+    {{ post.publishDate | date: "EEEE, d MMM y h:mm a" }}
+  </div>
+  <div class="card_content">{{ post.text }}</div>
+  <p-button
+    label="Likes"
+    [badge]="post.likes"
+    styleClass="p-mr-2 "
+    icon="pi pi-heart"
+  >
+  </p-button>
+  <p-footer>
+    <div class="pfooter">
+      <div class="badges">
+        <div class="p-tag" *ngFor="let tag of post.tags" (click)="gotoTag(tag)">
+          {{ tag }}
+        </div>
+      </div>
+      <div class="comments">
+        <p-button
+          (click)="getPostComments(post.id)"
+          label="View Comments"
+          styleClass="p-mr-2"
+        ></p-button>
+      </div>
+    </div>
+  </p-footer>
+  <div class="cardLoaderSpinner" *ngIf="postApiCall">
+    <p-progressSpinner strokeWidth="2"></p-progressSpinner>
+  </div>
+</p-card>
+
+<div *ngIf="dialogUser">
+  <p-dialog
+    [header]="userDetails.firstName + ' ' + userDetails.lastName"
+    [(visible)]="dialogUser"
+    [style]="{ width: '600px' }"
+  >
+    <p-card class="userDetails">
+      <p-header><img [src]="userDetails.picture" /></p-header>
+      <div class="p-card-title">{{ userDetails.email }}</div>
+      <div class="p-card-subtitle">{{ userDetails.phone }}</div>
+      <div class="card_content">
+        <div class="contentRow">
+          <div class="dataBox">
+            <div class="labelBox">Member Since</div>
+            <div class="valueBox">
+              {{ userDetails.registerDate | date: "yyy MMMM dd" }}
+            </div>
+          </div>
+          <div class="dataBox">
+            <div class="labelBox">Gender</div>
+            <div class="valueBox">{{ userDetails.gender }}</div>
+          </div>
+          <div class="dataBox">
+            <div class="labelBox">Birthdate</div>
+            <div class="valueBox">
+              {{ userDetails.dateOfBirth | date: "yyy MMMM dd" }}
+            </div>
+          </div>
+        </div>
+        <div class="contentRow">
+          <div class="dataBox">
+            <div class="labelBox">Address</div>
+            <div class="valueBox">{{ userDetails.location | address }}</div>
+          </div>
+        </div>
+      </div>
+    </p-card>
+  </p-dialog>
+</div>
+
+<div *ngIf="dialogComments">
+  <p-dialog
+    header="Comments"
+    [(visible)]="dialogComments"
+    [style]="{ width: '300px' }"
+  >
+    <div class="commentsBox flexColumn" *ngIf="comments.length > 0">
+      <div class="comment" *ngFor="let comment of comments">
+        <div class="commenHeader flexRow">
+          <div class="commentAuthorPic">
+            <img [src]="comment.owner.picture" />
+          </div>
+          <div class="commentAuthorName flexColumn">
+            {{ comment.owner | fullname }}
+          </div>
+        </div>
+        <div class="commentContent">{{ comment.message }}</div>
+        <div class="commentDate">
+          {{ comment.publishDate | date: "yyy MMMM dd" }}
+        </div>
+      </div>
+    </div>
+    <div class="noComments" *ngIf="!(comments.length > 0)">
+      No comments found
+    </div>
+  </p-dialog>
+</div>
+
+<div *ngIf="dialogTags">
+  <p-dialog header="Tags" [(visible)]="dialogTags" [style]="{ width: '600px' }">
+    <div class="badges p-grid">
+      <div
+        class="p-tag p-col-12 p-md-6 p-lg-3"
+        *ngFor="let tag of tags"
+        (click)="gotoTag(tag)"
+      >
+        {{ tag }}
+      </div>
+    </div>
+  </p-dialog>
+</div>
