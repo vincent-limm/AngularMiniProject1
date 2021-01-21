@@ -21,7 +21,7 @@ export class ApiService {
     return this.http.get(baseURL, { headers: this.headers });
   }
 
-  //Get users list (not used yet)
+  //Get users list
   getUsers() {
     return this.callAPI('/user');
   }
@@ -30,7 +30,7 @@ export class ApiService {
     return this.callAPI('/post');
   }
 
-  //Get tags list (not used yet)
+  //Get tags list
   getTags() {
     return this.callAPI('/tag');
   }
@@ -40,7 +40,7 @@ export class ApiService {
     return this.callAPI(`/tag/${tag}/post`);
   }
 
-  //Get posts list created by user (not used yet)
+  //Get posts list created by user
   getUserPosts(id: string) {
     return this.callAPI(`/user/${id}/post`);
   }

@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
       this.loading = false;
       this.tags = tags.data;
       this.dialogTags = true;
-      console.log(this.tags);
     });
   }
   gotoTag(tag: string) {
