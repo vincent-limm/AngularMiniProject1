@@ -34,9 +34,11 @@ export class PostCardComponent implements OnInit {
     let route = this.router.url;
 
     if (route.split('/')[1] === 'tag') {
+      window.scroll(0, 0);
       this.router.navigate(['tag/', tag]);
       this.reload.emit(tag);
     } else {
+      window.scroll(0, 0);
       this.router.navigate(['tag/', tag]);
     }
   }

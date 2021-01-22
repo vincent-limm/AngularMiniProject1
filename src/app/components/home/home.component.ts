@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
     this.apiService.getPosts().subscribe((items: any) => {
       this.loading = false;
       this.allPosts = items.data;
@@ -39,12 +40,7 @@ export class HomeComponent implements OnInit {
   gotoTag(tag: string) {
     let route = this.router.url;
     let tagstring = tag.split(' ').join('');
+    window.scroll(0, 0);
     this.router.navigate(['/tag', tag]);
-
-    // if (route.split('/')[1] === 'tag') {
-    //   this.reload.emit(tagstring);
-    // } else {
-    //   this.router.navigate(['/tag', tagstring]);
-    // }
   }
 }
