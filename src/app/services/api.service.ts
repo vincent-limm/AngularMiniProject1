@@ -9,7 +9,7 @@ export class ApiService {
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
-    this.appId = '60094c0eb499e54d109f62ba';
+    this.appId = '61f7b7ebd67eef8d19034af7';
 
     this.headers = new HttpHeaders({
       'app-id': this.appId,
@@ -17,7 +17,7 @@ export class ApiService {
   }
 
   callAPI(type: string) {
-    const baseURL = `https://dummyapi.io/data/api${type}`;
+    const baseURL = `https://dummyapi.io/data/v1${type}`;
     return this.http.get(baseURL, { headers: this.headers });
   }
 
